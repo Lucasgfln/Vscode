@@ -1,0 +1,25 @@
+Desafios de Programação - Lista com 9 Questões
+--------------------------------------------------
+1) Escreva um programa que leia um número inteiro e exiba todos os seus divisores, além de dizer se ele é perfeito 
+(a soma dos seus divisores próprios é igual a ele). (Nível: Normal)
+
+2) Faça um programa que leia uma sequência de números positivos e exiba a média dos que forem pares. 
+A leitura deve encerrar quando for digitado um número negativo. (Nível: Fácil)
+
+3) Escreva um programa que leia N registros de pessoas (nome e idade) e organize-os em ordem decrescente de idade. 
+Em seguida, exiba a lista formatada. (Nível: Difícil)
+
+4) Crie um programa que leia 10 números inteiros, armazene em um vetor e imprima os números que são múltiplos de 3 ou 5. (Nível: Fácil)
+
+5) Faça um programa que leia duas strings e determine se uma é anagrama da outra. (Nível: Difícil)
+
+6) Crie um programa que leia uma expressão matemática com parênteses, colchetes e chaves e verifique se os símbolos 
+estão balanceados. (Nível: Profissional)
+
+7) Crie um programa que leia uma string e diga se ela é um pangrama (frase que usa todas as letras do alfabeto pelo menos uma vez). (Nível: Difícil)
+
+8) Escreva um programa que leia uma string e conte quantas palavras existem nela. 
+Considere que as palavras estão separadas por um ou mais espaços. (Nível: Normal)
+
+9) Desenvolva um programa que leia uma string representando um número romano (até 3999) e converta para o número decimal 
+equivalente. (Nível: Difícil)
