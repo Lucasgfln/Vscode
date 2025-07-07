@@ -2,26 +2,29 @@
 
 int main (void){
     printf("\n\n<=================== I N I C I O ===================>\n\n");
-    float n, s, i, j, fatorial = 1;
+    float n, s = 0, i, j, fatorial = 1;
 
-    printf(" * Digite 'N': ");
+    printf(" * Digite 'N'(N < 11): ");
     scanf("%f", &n);
-    
-    for(i = 0; i <= 10; i++){
-        for(j = 1; j < i; j++) {
-            fatorial *= j;
-        }
-        if(i == 0) {
-            s = n;
 
-            continue;
-        } else if ((int) i % 2 == 0) {
-            s += n/fatorial;
-            
-        } else {
-            s -= n/fatorial;
+    if(n <= 10 && n > 0) {       
+        for(i = 0; i <= 10; i++){
+            fatorial = 1;
+
+            for(j = 1; j <= i; j++) {
+                fatorial *= j;
+            }
+
+            if ((int) i % 2 == 0) {
+                s += n/fatorial;
+                
+            } else {
+                s -= n/fatorial;
+            }
         }
-        fatorial = 1;
+    } else{
+        printf(" !!!!!Erro!!!!! \n N > 10 ou N < 1");
+        return 1;
     }
 
     printf("\n\n<================ R E S U L T A D O ================>\n\n");
