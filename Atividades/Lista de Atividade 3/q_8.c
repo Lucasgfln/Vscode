@@ -23,7 +23,7 @@ int main (void){
             }
         }
     } else{
-        printf(" !!!!!Erro!!!!! \n N > 10 ou N < 1");
+        printf("\n\n<=================== E R R O ! ! Lembre-se, N tem que ser maior que 0 e menor que 10 ===================>\n\n");
         return 1;
     }
 
