@@ -24,3 +24,4 @@ float maior(float *vetor, int tam){
 
     return maior;
 }
+
