@@ -80,11 +80,11 @@ void cadastro(Alunos **aluno, int *i){
             printf(" * Nome: ");
             scanf(" %[^\n]", (*aluno)[*i].nome);
 
-            printf(" * Matricula: ");
-            scanf("%d", &(*aluno)[*i].matricula);
-
             printf(" * Idade: ");
             scanf("%d", &(*aluno)[*i].idade);
+
+            printf(" * Matricula: ");
+            scanf("%d", &(*aluno)[*i].matricula);
 
             printf(" * Nota 1: ");
             scanf("%lf", &(*aluno)[*i].nota1);
@@ -128,8 +128,8 @@ int buscarMatricula(Alunos *aluno, int i) {
 void exibirAluno (Alunos *aluno, int i) {
     printf("\n <======== ALUNO: '%s' ========>\n", aluno[i].nome);
     printf("\n => Nome: %s\n", aluno[i].nome);
-    printf(" => Matricula: %i\n", aluno[i].matricula);
     printf(" => Idade: %i\n", aluno[i].idade);
+    printf(" => Matricula: %i\n", aluno[i].matricula);
     printf(" => 1a Nota: %.1lf\n", aluno[i].nota1);
     printf(" => 2a Nota: %.1lf\n", aluno[i].nota2);
 }
@@ -171,7 +171,18 @@ void exibirTodos(Alunos *aluno, int i) {
 }
 
 void editarAluno(Alunos *aluno, int i){
-    int indice = buscarMatricula(aluno, i);
-    
+    int opcao = 1;
+    do{
+        int indice = buscarMatricula(aluno, i);
+        printf("\n <========== M E N U ==========>\n");
+        printf(" [1] < NOME >\n");
+        printf(" [2] < IDADE >\n");
+        printf(" [3] < MATRICULA >\n");
+        printf(" [4] < NOTA 1 >\n");
+        printf(" [5] < NOTA 2 >\n");
+        printf(" [0] < Sair >\n");
+        printf("\n * Escolha Uma Opcao: ");
+        scanf("%d", &opcao);
+    } while(opcao);
 }
 
