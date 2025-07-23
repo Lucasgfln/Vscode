@@ -59,7 +59,8 @@ int main (void){
                 printf(" Encerrando O Programa...\n");
                 break;
             default:
-                printf(" !! Opcao Invalida !!\n");
+                printf("\n\n<=================== E R R O ! ! ===================>\n\n");
+                printf(" !! OPCAO INVALIDA !!");
         }
     } while(opcao != 0);
     
@@ -109,11 +110,10 @@ void cadastro(Alunos **aluno, int *i){
     } while (indice == 1);
 }
 
-int buscarMatricula(Alunos *aluno, int i) {
+int buscarAluno(Alunos *aluno, int i) {
     int matricula;
     printf(" * Informe A Matricula Do Aluno: ");
     scanf("%d", &matricula);
-
     for(int j = 0; j < i; j++) {
         if(matricula == aluno[j].matricula) {
             return j;
@@ -139,7 +139,7 @@ void exibirAlunoMatricula(Alunos *aluno, int i){
     int repetir = 1;
 
     while(repetir) {
-        int indice = buscarMatricula(aluno, i);
+        int indice = buscarMatricula(aluno, matricula,i);
 
         if(indice != -1){
             exibirAluno(aluno, indice);
@@ -171,18 +171,84 @@ void exibirTodos(Alunos *aluno, int i) {
 }
 
 void editarAluno(Alunos *aluno, int i){
-    int opcao = 1;
+    int opcao = 9;
     do{
-        int indice = buscarMatricula(aluno, i);
-        printf("\n <========== M E N U ==========>\n");
-        printf(" [1] < NOME >\n");
-        printf(" [2] < IDADE >\n");
-        printf(" [3] < MATRICULA >\n");
-        printf(" [4] < NOTA 1 >\n");
-        printf(" [5] < NOTA 2 >\n");
-        printf(" [0] < Sair >\n");
-        printf("\n * Escolha Uma Opcao: ");
-        scanf("%d", &opcao);
-    } while(opcao);
+        int indice = buscarAluno(aluno, i);
+        printf(" => Aluno '%s' Escolhido Com Sucesso!!");
+
+        do {
+            printf("\n <========== O QUE DESEJA ALTERAR? ==========>\n");
+            printf(" [1] < NOME >\n");
+            printf(" [2] < IDADE >\n");
+            printf(" [3] < MATRICULA >\n");
+            printf(" [4] < NOTA 1 >\n");
+            printf(" [5] < NOTA 2 >\n");
+            printf(" [0] < Sair >\n");
+            printf(" [8] < Exibir Informações Desse Aluno >\n");
+            printf(" [9] < Editar Outro Aluno >\n");
+            printf("\n * Escolha Uma Opcao: ");
+            scanf("%d", &opcao);
+
+            if(opcao != 0 && opcao != 9) {
+                switch(opcao) {
+                case 1:
+                    editarNome(aluno[indice].nome);                    
+                    break;
+                
+                case 8:
+                    exibirAluno(aluno, buscarMatricula()) //Resolve aí o baguí do buscar aluno, ta brekando o esquema aqui pow
+                    break;
+
+                default:
+                    printf("\n\n<=================== E R R O ! ! ===================>\n\n");
+                    printf(" !! OPCAO INVALIDA !!");
+                    break;
+                }
+            } else {
+                printf("\n\n<=================== E R R O ! ! ===================>\n\n");
+                printf(" !! OPCAO INVALIDA !!");
+            }
+        } while (opcao != 0 && opcao != 9);
+    } while(opcao != 0);
 }
 
+void editarNome(char *nome){
+    int opcao;
+    
+    printf("\n <========== EDITAR NOME ==========>\n");
+    do{
+        char aux[255];
+        printf("Nome Antigo: %s\n", nome);
+        printf("Nome Novo: ");
+        scanf(" %[^\n]", aux);
+
+        printf("\n <========= Confirmacao =========>\n\n");
+        printf(" => Voce realmente deseja modificar '%s' para '%s'\n", nome, aux);
+        printf(" [1] < Confirmar >\n");
+        printf(" [2] < Alterar >\n");
+        printf(" [0] < Cancelar >\n");
+        printf("\n * Escolha Uma Opcao: ");
+        scanf("%d", &opcao);
+
+        switch (opcao) {
+        case 1:
+            nome = aux;
+            printf(" <=== NOME ALTERADO COM SUCESSO ===>");
+            opcao = 0;
+            break;
+        
+        case 2:
+            break;
+
+        case 0:
+            printf(" <==== NOME NAO ALTERADO ====>");
+            break; 
+
+        default:
+            printf("\n\n<=================== E R R O ! ! ===================>\n\n");
+            printf(" !! OPCAO INVALIDA !!");
+            break;
+        }
+    } while(opcao != 0);
+
+}
