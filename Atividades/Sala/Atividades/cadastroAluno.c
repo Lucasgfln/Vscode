@@ -26,6 +26,7 @@ int main (void){
     int i = 0, opcao = 0;
     
     do {
+        system("cls");
         printf("\n <========== M E N U ==========>\n");
         printf(" [1] < Cadastrar Novo Aluno >\n");
         printf(" [2] < Exibir Informacoes De Um Aluno Especifico >\n");
@@ -74,6 +75,7 @@ int main (void){
 void cadastro(Alunos **aluno, int *i){
     int indice = 0;
     do {
+        system("cls");
         Alunos *temp = realloc(*aluno, (*i + 1) * sizeof(Alunos));
         if(temp != NULL) {
             *aluno = temp;
@@ -136,6 +138,7 @@ void exibirAluno (Alunos *aluno, int i) {
 }
 
 void exibirAlunoMatricula(Alunos *aluno, int i){
+    system("cls");
     printf("\n\n <======= I N F O R M A C O E S =======>\n");
     int repetir = 1;
 
@@ -158,6 +161,7 @@ void exibirAlunoMatricula(Alunos *aluno, int i){
 }
 
 void exibirTodos(Alunos *aluno, int i) {
+    system("cls");
     int aux;
 
     printf("\n\n <========== TODOS OS ALUNOS ==========>");
@@ -208,6 +212,8 @@ void editarNome(char *nome){
             printf(" !! OPCAO INVALIDA !!");
             break;
         }
+
+        system("cls");
     } while(opcao != 0);
 
 }
@@ -215,6 +221,7 @@ void editarNome(char *nome){
 void editarAluno(Alunos *aluno, int i){
     int opcao = 9;
     do{
+        system("cls");
         int indice = buscarAluno(aluno, i);
         printf(" => Aluno '%s' Escolhido Com Sucesso!!", aluno[indice].nome);
 
