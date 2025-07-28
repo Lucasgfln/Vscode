@@ -5,6 +5,8 @@ int fatorial(int n);
 
 int main (void){
     printf("\n\n<=================== I N I C I O ===================>\n\n");
+
+    printf("Combinacao: %i", combinacao(4,2));
     
     
 
@@ -26,7 +28,9 @@ int fatorial(int n){
 
 int combinacao(int n, int p){
     int c;
-    // c = n! / c! * (n-p)!;
+    // c = n! / p! * (n-p)!;
+
+    c = fatorial(n) / (fatorial(p) * fatorial(n-p));
 
     return c;
 }
