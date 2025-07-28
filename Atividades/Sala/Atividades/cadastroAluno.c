@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 struct Alunos {
     char nome[255];
@@ -139,7 +140,7 @@ void exibirAlunoMatricula(Alunos *aluno, int i){
     int repetir = 1;
 
     while(repetir) {
-        int indice = buscarMatricula(aluno, matricula,i);
+        int indice = buscarAluno(aluno, i);
 
         if(indice != -1){
             exibirAluno(aluno, indice);
@@ -170,48 +171,6 @@ void exibirTodos(Alunos *aluno, int i) {
     scanf("%i", &aux);
 }
 
-void editarAluno(Alunos *aluno, int i){
-    int opcao = 9;
-    do{
-        int indice = buscarAluno(aluno, i);
-        printf(" => Aluno '%s' Escolhido Com Sucesso!!");
-
-        do {
-            printf("\n <========== O QUE DESEJA ALTERAR? ==========>\n");
-            printf(" [1] < NOME >\n");
-            printf(" [2] < IDADE >\n");
-            printf(" [3] < MATRICULA >\n");
-            printf(" [4] < NOTA 1 >\n");
-            printf(" [5] < NOTA 2 >\n");
-            printf(" [0] < Sair >\n");
-            printf(" [8] < Exibir Informações Desse Aluno >\n");
-            printf(" [9] < Editar Outro Aluno >\n");
-            printf("\n * Escolha Uma Opcao: ");
-            scanf("%d", &opcao);
-
-            if(opcao != 0 && opcao != 9) {
-                switch(opcao) {
-                case 1:
-                    editarNome(aluno[indice].nome);                    
-                    break;
-                
-                case 8:
-                    exibirAluno(aluno, buscarMatricula()) //Resolve aí o baguí do buscar aluno, ta brekando o esquema aqui pow
-                    break;
-
-                default:
-                    printf("\n\n<=================== E R R O ! ! ===================>\n\n");
-                    printf(" !! OPCAO INVALIDA !!");
-                    break;
-                }
-            } else {
-                printf("\n\n<=================== E R R O ! ! ===================>\n\n");
-                printf(" !! OPCAO INVALIDA !!");
-            }
-        } while (opcao != 0 && opcao != 9);
-    } while(opcao != 0);
-}
-
 void editarNome(char *nome){
     int opcao;
     
@@ -232,7 +191,7 @@ void editarNome(char *nome){
 
         switch (opcao) {
         case 1:
-            nome = aux;
+            strcpy(nome, aux);
             printf(" <=== NOME ALTERADO COM SUCESSO ===>");
             opcao = 0;
             break;
@@ -252,3 +211,46 @@ void editarNome(char *nome){
     } while(opcao != 0);
 
 }
+
+void editarAluno(Alunos *aluno, int i){
+    int opcao = 9;
+    do{
+        int indice = buscarAluno(aluno, i);
+        printf(" => Aluno '%s' Escolhido Com Sucesso!!", aluno[indice].nome);
+
+        do {
+            printf("\n <========== O QUE DESEJA ALTERAR? ==========>\n");
+            printf(" [1] < NOME >\n");
+            printf(" [2] < IDADE >\n");
+            printf(" [3] < MATRICULA >\n");
+            printf(" [4] < NOTA 1 >\n");
+            printf(" [5] < NOTA 2 >\n");
+            printf(" [0] < Sair >\n");
+            printf(" [8] < Exibir Informações Desse Aluno >\n");
+            printf(" [9] < Editar Outro Aluno >\n");
+            printf("\n * Escolha Uma Opcao: ");
+            scanf("%d", &opcao);
+
+            if(opcao != 0 && opcao != 9) {
+                switch(opcao) {
+                case 1:
+                    editarNome(aluno[indice].nome);                    
+                    break;
+                
+                /*case 8:
+                    exibirAluno(aluno, buscarMatricula()); //Resolve aí o baguí do buscar aluno, ta brekando o esquema aqui pow
+                    break;*/
+
+                default:
+                    printf("\n\n<=================== E R R O ! ! ===================>\n\n");
+                    printf(" !! OPCAO INVALIDA !!");
+                    break;
+                }
+            } else {
+                printf("\n\n<=================== E R R O ! ! ===================>\n\n");
+                printf(" !! OPCAO INVALIDA !!");
+            }
+        } while (opcao != 0 && opcao != 9);
+    } while(opcao != 0);
+}
+
