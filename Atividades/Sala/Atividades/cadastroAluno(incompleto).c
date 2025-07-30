@@ -41,6 +41,7 @@ int main (void){
         printf(" [4] < Alterar Informacoes De Um Aluno >\n");
         printf(" [5] < Exibir Media De Um Aluno >\n");
         printf(" [6] < Exibir Media Da Turma >\n");
+        printf(" [7] < Calcular Media >\n");
         printf(" [0] < Sair >\n");
         printf("\n * Escolha Uma Opcao: ");
         scanf("%d", &opcao);
@@ -556,6 +557,7 @@ void editarAluno(Alunos *aluno, int i){
 }
 
 void mediaAluno(Alunos *aluno, int i){
+    int indice = buscarAluno(aluno, i);
     
 }
 
