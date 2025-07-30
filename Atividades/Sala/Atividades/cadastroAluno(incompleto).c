@@ -18,8 +18,9 @@ void cadastro(Alunos **aluno, int *i, int *tamanhoAlocado);
 void exibirAlunoMatricula(Alunos *aluno, int i);
 void exibirTodos(Alunos *aluno, int i);
 void editarAluno(Alunos *aluno, int i);
-void mediaAluno(Alunos *aluno, int i);
-void mediaTurma(Alunos *aluno, int i);
+int mediaAluno(Alunos *aluno, int indice);
+//int mediaTurma(Alunos *aluno, int i);
+int buscarAluno(Alunos *aluno, int i);
 
 int main (void){
     printf("\n\n<=================== I N I C I O ===================>\n\n");
@@ -60,11 +61,45 @@ int main (void){
                 editarAluno(alunos, i);
                 break;
             case 5:
-                mediaAluno(alunos, i);
+                int aux, repetir, indice;
+                do{
+                    indice = buscarAluno(alunos, i);
+                    if(indice != -1){
+                        repetir = 0;
+                    } else {
+                        do {
+                            printf("\n\n <=== OPCOES ===>\n");
+                            printf("[0] < Voltar >\n");
+                            printf("[1] < Tentar Novamente >\n");
+                            printf(" * Escolha Uma Opcao: ");
+                            scanf("%d", &repetir);
+
+                            if(repetir == 0) {
+                                repetir = 2;
+                                break;
+                            }
+                        } while (repetir != 1);
+                    }
+                } while(repetir == 1);
+
+                system("cls");
+
+                if(repetir == 2) {
+                    opcao = 2;
+                    continue;
+                }
+
+                double media = mediaAluno(alunos, indice);
+                printf(" => Media do aluno(a) '%s' eh: %lf\n\n", alunos[indice].nome, media);
+
+                printf(" [0] < Voltar >\n");
+                printf(" * Escolha Uma Opcao: ");
+                scanf("%i", &aux);
+
                 break;
-            case 6:
-                mediaTurma(alunos, i);
-                break;
+            //case 6:
+                //mediaTurma(alunos, i);
+                //break;
             case 0:
                 system("cls");
                 printf(" Encerrando O Programa...\n");
@@ -543,22 +578,23 @@ void editarAluno(Alunos *aluno, int i){
 
                 default:
                     printf("\n\n<=================== E R R O ! ! ===================>\n\n");
-                    printf(" !! OPCAO INVALIDA !!");
+                    printf(" !! OPCAO INVALIDA !! :->");
                     Sleep(2000);
                     break;
                 }
             } else {
                 printf("\n\n<=================== E R R O ! ! ===================>\n\n");
-                printf(" !! OPCAO INVALIDA !!");
+                printf(" !! OPCAO INVALIDA :-<!!");
                 Sleep(2000);
             }
         } while (opcao != 0 && opcao != 9);
     } while(opcao != 0);
 }
 
-void mediaAluno(Alunos *aluno, int i){
-    int indice = buscarAluno(aluno, i);
-    
+int  mediaAluno(Alunos *aluno, int indice){
+    int media = (aluno[indice].nota1 + aluno[indice].nota2) / 2;
+
+    return media;
 }
 
 //Até agora tudo certo, Continue as funções e ajeite a repetição quando erra a matricula lá no editar aluno;
