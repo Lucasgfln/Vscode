@@ -41,7 +41,7 @@ int main (void){
         printf(" [3] < Exibir Todos Os Alunos >\n");
         printf(" [4] < Alterar Informacoes De Um Aluno >\n");
         printf(" [5] < Exibir Media De Um Aluno >\n");
-        printf(" [6] < Exibir Media Da Turma >\n");
+        printf(" [6] < Exibir Media Da Turma >\n"); //problema
         printf(" [7] < Calcular Media >\n");
         printf(" [0] < Sair >\n");
         printf("\n * Escolha Uma Opcao: ");

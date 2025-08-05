@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>AdoteJá - Login e Cadastro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url("Fundo.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .titulo {
+      width: 100%;
+      max-width: 400px;
+      margin: 30px auto 10px;
+    }
+
+    .titulo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      width: 90%;
+      max-width: 350px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      display: none;
+      flex-direction: column;
+    }
+
+    form.active {
+      display: flex;
+    }
+
+    label {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #2c9984;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #227a6a;
+    }
+
+    .toggle-btn {
+      background: none;
+      border: none;
+      color: #2c9984;
+      cursor: pointer;
+      margin-top: 10px;
+      text-align: left;
+      text-decoration: underline;
+    }
+
+    .toggle-btn:hover {
+      color: #227a6a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="titulo">
+    <img src="titulo.png" alt="Logo AdoteJá">
+  </div>
+
+  <div class="container">
+    <!-- Tela de Login -->
+    <form id="loginForm" class="active">
+      <h2>Login</h2>
+      <label for="login">E-mail:</label>
+      <input type="email" id="login" required>
+
+      <label for="senhaLogin">Senha:</label>
+      <input type="password" id="senhaLogin" required>
+
+      <button type="submit">Entrar</button>
+      <button type="button" class="toggle-btn" onclick="mostrarCadastro()">Não tem conta? Registrar</button>
+    </form>
+
+    <!-- Tela de Cadastro -->
+    <form id="cadastroForm">
+      <h2>Cadastro</h2>
+
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" required>
+
+      <label for="email">E-mail:</label>
+      <input type="email" id="email" required>
+
+      <label for="data">Data de Nascimento:</label>
+      <input type="date" id="data" required>
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" required>
+
+      <label for="confirma">Confirmar Senha:</label>
+      <input type="password" id="confirma" required>
+
+      <button type="submit">Cadastrar</button>
+      <button type="button" class="toggle-btn" onclick="mostrarLogin()">Já tem conta? Voltar ao login</button>
+    </form>
+  </div>
+
+  <script>
+    function mostrarCadastro() {
+      document.getElementById('loginForm').classList.remove('active');
+      document.getElementById('cadastroForm').classList.add('active');
+    }
+
+    function mostrarLogin() {
+      document.getElementById('cadastroForm').classList.remove('active');
+      document.getElementById('loginForm').classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
