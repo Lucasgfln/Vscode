@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "matriz.h": "c",
-        "cadastro.h": "c"
+        "cadastro.h": "c",
+        "string.h": "c"
     }
 }
