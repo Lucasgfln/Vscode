@@ -27,6 +27,7 @@ public class Pessoa {
     }
 
     public void exibir(){
+        System.out.println("========= V A L O R E S =========");
         System.out.println("CPF: " + cpf);
         System.out.println("Nome: " + nome);
         System.out.println("Idade: " + idade);
