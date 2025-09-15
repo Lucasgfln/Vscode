@@ -19,8 +19,9 @@ public class Teste {
         p.setNome(nome);
         p.setIdade(idade);
         
-        System.out.println("CPF: "+cpf);
-        System.out.println("Nome: "+nome);
-        System.out.println("Idade: "+idade);
+        p.exibir();
+
+        leitor.close();
+        
     }
 }
