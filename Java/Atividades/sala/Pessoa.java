@@ -25,4 +25,10 @@ public class Pessoa {
     public int getIdade(){
         return idade;
     }
+
+    public void exibir(){
+        System.out.println("CPF: " + cpf);
+        System.out.println("Nome: " + nome);
+        System.out.println("Idade: " + idade);
+    }
 }
