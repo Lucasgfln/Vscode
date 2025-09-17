@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TesteCaixadeDialogo",
+            "request": "launch",
+            "mainClass": "Testes.TesteCaixadeDialogo",
+            "projectName": "Java_4c24f3c0"
+        },
+        {
+            "type": "java",
             "name": "Principal",
             "request": "launch",
             "mainClass": "projeto.Principal",
