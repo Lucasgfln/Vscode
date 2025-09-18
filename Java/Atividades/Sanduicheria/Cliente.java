@@ -5,7 +5,13 @@ public class Cliente {
 	private String telefone;
 	private String endereco;
 
-	// -- Getters e Setters --
+	public Cliente(String nome, String cpf, String email, String telefone, String endereco) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+		this.telefone = telefone;
+		this.endereco = endereco;
+	}
 
 	public String getNome () {
 		return nome;
@@ -40,5 +46,21 @@ public class Cliente {
 	}
 	public void setEndereco(String endereco) {
 		this.endereco = endereco;
+	}
+
+	public void show() {
+		System.out.println("Nome: " + nome);
+		System.out.println("CPF: " + cpf);
+		System.out.println("Email: " + email);
+		System.out.println("Telefone: " + telefone);
+		System.out.println("Endereço: " + endereco);
+	}
+
+	public void delete() {
+		nome = null;
+		cpf = null;
+		email = null;
+		telefone = null;
+		endereco = null;
 	}
 }

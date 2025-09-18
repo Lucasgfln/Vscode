@@ -1,5 +1,4 @@
 public class Funcionarios {
-    public class Funcionario {
     private String nome;
     private String cpf;
     private String email;
@@ -8,6 +7,17 @@ public class Funcionarios {
     private boolean ativo;
     private String cargo;
     private double salario;
+
+    public Funcionarios(String nome, String cpf, String email, int idade, String endereço, boolean ativo, String cargo, double salario) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+        this.idade = idade;
+        this.endereço = endereço;
+        this.ativo = ativo;
+        this.cargo = cargo;
+        this.salario = salario;
+    }
     
     public String getNome(){
     return nome;
@@ -73,5 +83,25 @@ public class Funcionarios {
         this.salario = salario;
     }
     
-}
+    public void show() {
+        System.out.println("Nome: " + nome);
+        System.out.println("CPF: " + cpf);
+        System.out.println("Email: " + email);
+        System.out.println("Idade: " + idade);
+        System.out.println("Endereço: " + endereço);
+        System.out.println("Ativo: " + ativo);
+        System.out.println("Cargo: " + cargo);
+        System.out.println("Salário: " + salario);
+    }
+
+    public void delete() {
+        nome = null;
+        cpf = null;
+        email = null;
+        idade = 0;
+        endereço = null;
+        ativo = false;
+        cargo = null;
+        salario = 0.0;
+    }
 }
