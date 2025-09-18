@@ -1,5 +1,3 @@
-package Atividades.Sanduicheria;
-
 public class Pedidos {
     private int idPedido;
     private int status;
