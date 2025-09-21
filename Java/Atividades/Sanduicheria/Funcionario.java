@@ -1,4 +1,4 @@
-public class Funcionarios {
+public class Funcionario {
     private String nome;
     private String cpf;
     private String email;
@@ -8,7 +8,7 @@ public class Funcionarios {
     private String cargo;
     private double salario;
 
-    public Funcionarios(String nome, String cpf, String email, int idade, String endereço, boolean ativo, String cargo, double salario) {
+    public Funcionario(String nome, String cpf, String email, int idade, String endereço, boolean ativo, String cargo, double salario) {
         this.nome = nome;
         this.cpf = cpf;
         this.email = email;

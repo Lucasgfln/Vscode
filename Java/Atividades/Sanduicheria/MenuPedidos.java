@@ -2,8 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuPedidos {
-    private ArrayList<Pedido> listaPedidos = new ArrayList<>();
-    private Scanner sc;
+    private final ArrayList<Pedido> listaPedidos = new ArrayList<>();
+    private final Scanner sc;
     private int id = 1;
 
     public MenuPedidos(Scanner sc) {
@@ -23,16 +23,254 @@ public class MenuPedidos {
             sc.nextLine();
 
             switch (opcao) {
-                case 1: 
-                    novoPedido(); 
+                case 1:
+                    novoPedido();
                     break;
-                case 2: 
-                    verPedidos(); 
+                case 2:
+                    verPedidos();
                     break;
-                case 3: 
-                    alterarPedido(); 
+                case 3:
+                    alterarPedido();
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println(" !! NÚMERO INVÁLIDO !!");
                     break;
             }
         } while (opcao != 0);
+    }
+
+    private void novoPedido() {
+        Utilitys.espaco(3, "\n");
+        int idPedido = id;
+
+        System.out.print("ID do Cliente: ");
+        int idCliente = sc.nextInt();
+        sc.nextLine();
+        Utilitys.espaco(1, "");
+
+        System.out.print("Escreva o Pedido: ");
+        String pedido = sc.nextLine();
+        Utilitys.espaco(1, "");
+
+        System.out.print("Valor Final: R$");
+        float valorFinal = sc.nextFloat();
+        Utilitys.espaco(1, "");
+
+        int formaPagamento = 0;
+        do {
+            System.out.println(" => Forma de Pagamento: ");
+            System.out.println(" > [1] Pix");
+            System.out.println(" > [2] Espécie");
+            System.out.println(" > [3] Cartão Débito");
+            System.out.println(" > [4] Cartão Crédito");
+            System.out.println(" ============================================\n");
+            System.out.print(" Escolha uma opção: ");
+            formaPagamento = sc.nextInt();
+            sc.nextLine();
+        } while (formaPagamento < 1 || formaPagamento > 4);
+        Utilitys.espaco(1, "");
+
+        System.out.print("Observação: ");
+        String observacao = sc.nextLine();
+        Utilitys.espaco(1, "");
+
+        int entrega = 0;
+        do {
+            System.out.println(" > [1] Entrega");
+            System.out.println(" > [2] Retirada");
+            System.out.println(" > [3] Mesa");
+            System.out.println(" ============================================\n");
+            System.out.print(" Escolha uma opção: ");
+            entrega = sc.nextInt();
+            sc.nextLine();
+        } while (entrega < 1 || entrega > 3);
+        Utilitys.espaco(1, "");
+
+        String endereco;
+        if (entrega == 1) {
+            System.out.print("Endereço: ");
+            endereco = sc.nextLine();
+        } else {
+            endereco = null;
+        }
+        Utilitys.espaco(1, "");
+
+        int status = 0;
+        do {
+            System.out.println(" => Status: ");
+            System.out.println(" > [1] Em preparo");
+            System.out.println(" > [2] Pronto");
+            System.out.println(" > [0] Cancelado");
+            System.out.println(" ============================================\n");
+            System.out.print(" Escolha uma opção: ");
+            status = sc.nextInt();
+        } while (status < 0 || status > 2);
+        sc.nextLine();
+        Utilitys.espaco(1, "");
+
+        Pedido pedidos = new Pedido(
+            idPedido, status, idCliente, pedido, valorFinal,
+            formaPagamento, observacao, entrega, endereco
+        );
+        listaPedidos.add(pedidos);
+
+        System.out.println("Pedido cadastrado com sucesso!");
+        Utilitys.espaco(4, "\n");
+        id++;
+    }
+
+    private void verPedidos() {
+        Utilitys.espaco(3, "\n");
+        if (listaPedidos.isEmpty()) {
+            System.out.println("Nenhum pedido cadastrado.");
+            Utilitys.pause();
+            return;
+        }
+        int contador = 1;
+        for (Pedido pedido : listaPedidos) {
+            Utilitys.espaco(1, "");
+            System.out.println(" ==== Pedido " + contador + " ====");
+            pedido.show();
+            contador++;
+        }
+        Utilitys.pause();
+    }
+
+    private void alterarPedido() {
+        System.out.print("Digite o n° do pedido: ");
+        int idBusca = sc.nextInt();
+        sc.nextLine();
+
+        Pedido pedido = buscarPedido(idBusca);
+
+        if (pedido == null) {
+            System.out.println("Pedido não encontrado!");
+            Utilitys.pause();
+            return;
+        } else {
+            System.out.println(" Pedido n°" + pedido.getIdPedido() + " selecionado com sucesso!!");
+            pedido.show();
+            Utilitys.pause();
+        }
+
+        int opcao;
+        do {
+            System.out.println("\n=== Alterar Pedido " + pedido.getIdPedido() + " ===");
+            System.out.println("[1] Alterar Status");
+            System.out.println("[2] Alterar ID do Cliente");
+            System.out.println("[3] Alterar Pedido");
+            System.out.println("[4] Alterar Valor Final");
+            System.out.println("[5] Alterar Forma de Pagamento");
+            System.out.println("[6] Alterar Observação");
+            System.out.println("[7] Alterar Forma de Entrega");
+            System.out.println("[8] Alterar Endereço");
+            System.out.println("[0] Voltar");
+            System.out.print("Escolha: ");
+            opcao = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcao) {
+                case 1:
+                    int novoStts;
+                    do {
+                        System.out.println(" => Status: ");
+                        System.out.println(" > [1] Em preparo");
+                        System.out.println(" > [2] Pronto");
+                        System.out.println(" > [0] Cancelado");
+                        System.out.println(" ============================================\n");
+                        System.out.print(" Escolha uma opção: ");
+                        novoStts = sc.nextInt();
+                        sc.nextLine();
+                    } while (novoStts < 0 || novoStts > 2);
+                    pedido.alterarStatus(novoStts);
+                    break;
+
+                case 2:
+                    System.out.print("Novo ID do Cliente: ");
+                    int novoIdC = sc.nextInt();
+                    sc.nextLine();
+                    pedido.alterarIdCliente(novoIdC);
+                    break;
+
+                case 3:
+                    System.out.print("Novo Pedido: ");
+                    String novoP = sc.nextLine();
+                    pedido.alterarPedido(novoP);
+                    break;
+
+                case 4:
+                    System.out.print("Novo Valor Final: ");
+                    float novoVF = sc.nextFloat();
+                    sc.nextLine();
+                    pedido.alterarValorFinal(novoVF);
+                    break;
+
+                case 5:
+                    int novaFP;
+                    do {
+                        System.out.println(" Nova Forma de Pagamento: ");
+                        System.out.println(" > [1] Pix");
+                        System.out.println(" > [2] Espécie");
+                        System.out.println(" > [3] Cartão Débito");
+                        System.out.println(" > [4] Cartão Crédito");
+                        System.out.println(" > [0] Voltar");
+                        System.out.println(" ============================================\n");
+                        System.out.print(" Escolha uma opção: ");
+                        novaFP = sc.nextInt();
+                        sc.nextLine();
+                    } while (novaFP < 0 || novaFP > 4);
+                    if (novaFP != 0) { // só altera se não for "voltar"
+                        pedido.alterarFormaPagamento(novaFP);
+                    }
+                    break;
+
+                case 6:
+                    System.out.print("Nova observação: ");
+                    String novaObs = sc.nextLine();
+                    pedido.alterarObservacao(novaObs);
+                    break;
+
+                case 7:
+                    int novaE;
+                    do {
+                        System.out.println(" Nova Forma de Entrega: ");
+                        System.out.println(" > [1] Entrega");
+                        System.out.println(" > [2] Retirada");
+                        System.out.println(" > [3] Mesa");
+                        System.out.println(" ============================================\n");
+                        System.out.print(" Escolha uma opção: ");
+                        novaE = sc.nextInt();
+                        sc.nextLine();
+                    } while (novaE < 1 || novaE > 3);
+                    pedido.alterarEntrega(novaE);
+                    if (novaE != 1) pedido.alterarEndereco(null);
+                    break;
+
+                case 8:
+                    System.out.print("Novo endereço: ");
+                    String novoEndereco = sc.nextLine();
+                    pedido.alterarEndereco(novoEndereco);
+                    break;
+
+                case 0:
+                    System.out.println("Voltando...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida.");
+                    break;
+            }
+        } while (opcao != 0);
+    }
+
+    private Pedido buscarPedido(int idBusca) {
+        for (Pedido pedido : listaPedidos) {
+            if (pedido.getIdPedido() == idBusca) {
+                return pedido;
+            }
+        }
+        return null;
     }
 }
