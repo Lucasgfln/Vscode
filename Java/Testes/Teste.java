@@ -1,6 +1,8 @@
-package Atividades.sala;
+package Testes;
 
 import java.util.Scanner;
+
+import Atividades.sala.Pessoa;
 
 public class Teste {
     public static void main(String[] args) {

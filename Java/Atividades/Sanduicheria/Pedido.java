@@ -2,20 +2,20 @@ public class Pedido {
     private int idPedido;
     private int status;
     private int idCliente;
-    private int idItem;
+    private String pedido;
     private float valorFinal;
-    private int foramPagamento;
+    private int formaPagamento;
     private String observacao;
     private int entrega;
     private String endereco;
 
-    public Pedido(int idPedido, int status, int idCliente, int idItem, float valorFinal, int foramPagamento, String observacao, int entrega, String endereco) {
+    public Pedido(int idPedido, int status, int idCliente, String pedido, float valorFinal, int foramPagamento, String observacao, int entrega, String endereco) {
         this.idPedido = idPedido;
         this.status = status;
         this.idCliente = idCliente;
-        this.idItem = idItem;
+        this.pedido = pedido;
         this.valorFinal = valorFinal;
-        this.foramPagamento = foramPagamento;
+        this.formaPagamento = foramPagamento;
         this.observacao = observacao;
         this.entrega = entrega;
         this.endereco = endereco;
@@ -39,11 +39,11 @@ public class Pedido {
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
     }
-    public int getIdItem() {
-        return idItem;
+    public String getPedido() {
+        return pedido;
     }
-    public void setIdItem(int idItem) {
-        this.idItem = idItem;
+    public void setPedido(String pedido) {
+        this.pedido = pedido;
     }
     public float getValorFinal() {
         return valorFinal;
@@ -52,10 +52,10 @@ public class Pedido {
         this.valorFinal = valorFinal;
     }
     public int getForamPagamento() {
-        return foramPagamento;
+        return formaPagamento;
     }
     public void setForamPagamento(int foramPagamento) {
-        this.foramPagamento = foramPagamento;
+        this.formaPagamento = foramPagamento;
     }
     public String getObservacao() {
         return observacao;
@@ -78,13 +78,58 @@ public class Pedido {
 
     public void show() {
         System.out.println("ID do Pedido: " + idPedido);
-        System.out.println("Status: " + status);
+        System.out.print("Status: ");
+        switch (status) {
+            case 1:
+                System.out.println("Em preparo");
+                break;
+            case 2:
+                System.out.println("Pronto");
+                break;
+            case 3:
+                System.out.println("Cancelado");
+                break;
+            default:
+                System.out.println(" !!!! OPÇÃO ERRADA VIU !!!!");
+                break;
+        }
         System.out.println("ID do Cliente: " + idCliente);
-        System.out.println("ID do Item: " + idItem);
-        System.out.println("Valor Final: " + valorFinal);
-        System.out.println("Forma de Pagamento: " + foramPagamento);
+        System.out.println("Pedido: " + pedido);
+        System.out.println("Valor Final: R$" + valorFinal);
+        System.out.print("Forma de Pagamento: ");
+        switch (formaPagamento) {
+            case 1:
+                System.out.println("Pix");
+                break;
+            case 2:
+                System.out.println("Espécie");
+                break;
+            case 3:
+                System.out.println("Cartão Débito");
+                break;
+            case 4:
+                System.out.println("Cartão Crédito");
+                break;
+            default:
+                System.out.println(" !!!! OPÇÃO ERRADA VIU !!!!");
+                break;
+        }
         System.out.println("Observação: " + observacao);
-        System.out.println("Entrega: " + entrega);
+        System.out.print("Para ");
+        switch (entrega) {
+            case 1:
+                System.out.println("Entrega");
+                break;
+            case 2:
+                System.out.println("Retirada");
+                break;
+            case 3:
+                System.out.println("Mesa");
+                break;
+            default:
+                System.out.println(" !!!! OPÇÃO ERRADA VIU !!!!");
+                break;
+        }
         System.out.println("Endereço: " + endereco);
     }
 
@@ -92,11 +137,40 @@ public class Pedido {
         idPedido = 0;
         status = 0;
         idCliente = 0;
-        idItem = 0;
+        pedido = null;
         valorFinal = 0;
-        foramPagamento = 0;
+        formaPagamento = 0;
         observacao = null;
         entrega = 0;
         endereco = null;
+    }
+
+    public void alterarIdPedido(int idPedido) {
+        this.idPedido = idPedido;
+    }
+    public void alterarStatus(int status) {
+        this.status = status;
+    }
+    public void alterarIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    public void alterarPedido(String pedido) {
+        this.pedido = pedido;
+    }
+    public void alterarValorFinal(float valorFinal) {
+        this.valorFinal = valorFinal;
+    }
+    public void alterarFormaPagamento(int formaPagamento) {
+        this.formaPagamento = formaPagamento;
+    }
+    public void alterarObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+    public void alterarEntrega(int entrega) {
+        this.entrega = entrega;
+
+    }
+    public void alterarEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
