@@ -178,6 +178,11 @@ public class Main {
 
     public static void verPedidos(){
         espaco(3, "\n");
+        if (listaPedidos.isEmpty()) { 
+            System.out.println("Nenhum pedido cadastrado."); 
+            pause(); 
+            return; 
+        }
         int contador = 1;
         for (Pedido pedido : listaPedidos) {
             espaco(1,"");
@@ -302,7 +307,7 @@ public class Main {
             }
         } while (opcao != 0);
     }
-    
+
     public static Pedido buscarPedido(int idBusca) {
         for (Pedido pedido : listaPedidos) {
             if(pedido.getIdPedido() == idBusca) {
