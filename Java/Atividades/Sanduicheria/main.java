@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    //continuar os menus como o de profutos etc....
+    //continuar os menus como o de produtos etc....
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         MenuPedidos menuPedidos = new MenuPedidos(sc);

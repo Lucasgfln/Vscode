@@ -91,7 +91,7 @@ public class Funcionario {
         System.out.println("Endereço: " + endereço);
         System.out.println("Ativo: " + ativo);
         System.out.println("Cargo: " + cargo);
-        System.out.println("Salário: " + salario);
+        System.out.println("Salário: R$" + salario);
     }
 
     public void delete() {
