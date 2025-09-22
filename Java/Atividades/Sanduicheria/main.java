@@ -5,6 +5,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         MenuPedidos menuPedidos = new MenuPedidos(sc);
+        MenuClientes menuClientes = new MenuClientes(sc);
         
         do {
             System.out.println(" ===  S A N D U I C H E R I A  -  N C  ===");
@@ -23,7 +24,7 @@ public class Main {
                     menuPedidos.exibirMenu();
                     break;
                 case 2:
-
+                    menuClientes.exibirMenu();
                     break;
                 case 3:
                     

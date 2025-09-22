@@ -45,9 +45,8 @@ public class MenuPedidos {
         Utilitys.espaco(3, "\n");
         int idPedido = id;
 
-        System.out.print("ID do Cliente: ");
-        int idCliente = sc.nextInt();
-        sc.nextLine();
+        System.out.print("Nome do(a) Cliente: ");
+        String nomeCliente = sc.nextLine();
         Utilitys.espaco(1, "");
 
         System.out.print("Escreva o Pedido: ");
@@ -111,7 +110,7 @@ public class MenuPedidos {
         Utilitys.espaco(1, "");
 
         Pedido pedidos = new Pedido(
-            idPedido, status, idCliente, pedido, valorFinal,
+            idPedido, status, nomeCliente, pedido, valorFinal,
             formaPagamento, observacao, entrega, endereco
         );
         listaPedidos.add(pedidos);
@@ -159,13 +158,14 @@ public class MenuPedidos {
         do {
             System.out.println("\n=== Alterar Pedido " + pedido.getIdPedido() + " ===");
             System.out.println("[1] Alterar Status");
-            System.out.println("[2] Alterar ID do Cliente");
+            System.out.println("[2] Alterar Nome do(a) Cliente");
             System.out.println("[3] Alterar Pedido");
             System.out.println("[4] Alterar Valor Final");
             System.out.println("[5] Alterar Forma de Pagamento");
             System.out.println("[6] Alterar Observação");
             System.out.println("[7] Alterar Forma de Entrega");
             System.out.println("[8] Alterar Endereço");
+            System.out.println("[9] Deletar Pedido");
             System.out.println("[0] Voltar");
             System.out.print("Escolha: ");
             opcao = sc.nextInt();
@@ -188,10 +188,9 @@ public class MenuPedidos {
                     break;
 
                 case 2:
-                    System.out.print("Novo ID do Cliente: ");
-                    int novoIdC = sc.nextInt();
-                    sc.nextLine();
-                    pedido.alterarIdCliente(novoIdC);
+                    System.out.print("Novo Nome do(a) Cliente: ");
+                    String novoNC = sc.nextLine();
+                    pedido.alterarNomeCliente(novoNC);
                     break;
 
                 case 3:
@@ -252,6 +251,14 @@ public class MenuPedidos {
                     System.out.print("Novo endereço: ");
                     String novoEndereco = sc.nextLine();
                     pedido.alterarEndereco(novoEndereco);
+                    break;
+                case 9:
+                    pedido.delete();
+                    pedido.show();
+                    listaPedidos.remove(pedido);
+                    System.out.print(" ==== PEDIDO DELETADO COM SUCESSO ====");
+                    Utilitys.pause();
+                    opcao = 0;
                     break;
 
                 case 0:

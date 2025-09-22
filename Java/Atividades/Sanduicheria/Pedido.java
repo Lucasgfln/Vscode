@@ -1,7 +1,7 @@
 public class Pedido {
     private int idPedido;
     private int status;
-    private int idCliente;
+    private String nomeCliente;
     private String pedido;
     private float valorFinal;
     private int formaPagamento;
@@ -9,10 +9,10 @@ public class Pedido {
     private int entrega;
     private String endereco;
 
-    public Pedido(int idPedido, int status, int idCliente, String pedido, float valorFinal, int foramPagamento, String observacao, int entrega, String endereco) {
+    public Pedido(int idPedido, int status, String nomeCliente, String pedido, float valorFinal, int foramPagamento, String observacao, int entrega, String endereco) {
         this.idPedido = idPedido;
         this.status = status;
-        this.idCliente = idCliente;
+        this.nomeCliente = nomeCliente;
         this.pedido = pedido;
         this.valorFinal = valorFinal;
         this.formaPagamento = foramPagamento;
@@ -33,11 +33,11 @@ public class Pedido {
     public void setStatus(int status) {
         this.status = status;
     }
-    public int getIdCliente() {
-        return idCliente;
+    public String getNomeCliente() {
+        return nomeCliente;
     }
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
     public String getPedido() {
         return pedido;
@@ -86,14 +86,14 @@ public class Pedido {
             case 2:
                 System.out.println("Pronto");
                 break;
-            case 3:
+            case 0:
                 System.out.println("Cancelado");
                 break;
             default:
                 System.out.println(" !!!! OPÇÃO ERRADA VIU !!!!");
                 break;
         }
-        System.out.println("ID do Cliente: " + idCliente);
+        System.out.println("Nome do(a) Cliente: " + nomeCliente);
         System.out.println("Pedido: " + pedido);
         System.out.println("Valor Final: R$" + valorFinal);
         System.out.print("Forma de Pagamento: ");
@@ -136,7 +136,7 @@ public class Pedido {
     public void delete() {
         idPedido = 0;
         status = 0;
-        idCliente = 0;
+        nomeCliente = null;
         pedido = null;
         valorFinal = 0;
         formaPagamento = 0;
@@ -151,8 +151,8 @@ public class Pedido {
     public void alterarStatus(int status) {
         this.status = status;
     }
-    public void alterarIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void alterarNomeCliente(String nomeCliente) {
+        this.nomeCliente = nomeCliente;
     }
     public void alterarPedido(String pedido) {
         this.pedido = pedido;

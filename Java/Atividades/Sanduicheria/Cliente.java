@@ -1,16 +1,26 @@
 public class Cliente {
+	private int id;
 	private String nome;
 	private String cpf;
 	private String email;
 	private String telefone;
 	private String endereco;
 
-	public Cliente(String nome, String cpf, String email, String telefone, String endereco) {
+	public Cliente(int id, String nome, String cpf, String email, String telefone, String endereco) {
+		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
 		this.email = email;
 		this.telefone = telefone;
 		this.endereco = endereco;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNome () {
@@ -49,6 +59,7 @@ public class Cliente {
 	}
 
 	public void show() {
+		System.out.println("ID do(a) Cliente: " + id);
 		System.out.println("Nome: " + nome);
 		System.out.println("CPF: " + cpf);
 		System.out.println("Email: " + email);
@@ -63,4 +74,24 @@ public class Cliente {
 		telefone = null;
 		endereco = null;
 	}
+
+	public void alterarId(int id) {
+		this.id = id;
+	}
+    public void alterarNome(String nome) {
+		this.nome = nome;
+	}
+	public void alterarCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public void alterarEmail(String email) {
+		this.email = email;
+	}
+	public void alterarTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public void alterarEndereco(String endereco) {
+		this.endereco = endereco;
+	}
+
 }
