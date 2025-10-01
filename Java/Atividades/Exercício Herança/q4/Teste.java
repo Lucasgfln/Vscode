@@ -1,4 +1,9 @@
-public class MainGatoCachorro {
+package q4;
+import q1.*;
+import q3.*;
+import q4.*;
+
+public class Teste {
     public static void main(String[] args) {
         Cachorro cachorro = new Cachorro();
         Gato gato = new Gato();
@@ -11,5 +16,15 @@ public class MainGatoCachorro {
 
         System.out.println("Cachorro: \n" + cachorro.getNome() + "\n" + cachorro. getRaca());
         System.out.println("Gato: \n" + gato.getNome() + "\n" + gato.getRaca());
+
+
+        System.out.println(" Animais Caminhando: ");
+        gato.caminha();
+        cachorro.caminha();
+
+
+        
+
+
     }
 }
